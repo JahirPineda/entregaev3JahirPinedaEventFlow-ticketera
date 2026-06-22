@@ -1,0 +1,6 @@
+INSERT INTO tickets_generados (codigo_qr, fecha_emision, usado, tipo_entrada, orden_id, cliente_id, evento_id) VALUES
+                                                                                                                   ('QR-001-ABC123', '2024-07-01 10:31:00', false, 'GENERAL', 1, 1, 1),
+                                                                                                                   ('QR-002-DEF456', '2024-07-02 11:01:00', false, 'VIP', 2, 2, 1),
+                                                                                                                   ('QR-003-GHI789', '2024-07-03 12:16:00', false, 'GENERAL', 3, 3, 2),
+                                                                                                                   ('QR-004-JKL012', '2024-07-05 14:01:00', true, 'GENERAL', 5, 5, 3),
+                                                                                                                   ('QR-005-MNO345', '2024-07-06 15:31:00', false, 'GENERAL', 6, 1, 4);
