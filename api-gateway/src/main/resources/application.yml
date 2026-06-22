@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 8090
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: Clientes
+        url: /clientes/api-docs
+      - name: Ordenes
+        url: /ordenes/api-docs
