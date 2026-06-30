@@ -1,0 +1,6 @@
+INSERT INTO recintos (nombre, direccion, ciudad, capacidad, imagen_url, activo) VALUES
+                                                                                    ('Estadio Nacional', 'Av. Grecia 2001', 'Santiago', 47000, 'https://img.com/estadio.jpg', true),
+                                                                                    ('Movistar Arena', 'Av. Beauchef 938', 'Santiago', 15000, 'https://img.com/arena.jpg', true),
+                                                                                    ('Teatro Municipal', 'Agustinas 794', 'Santiago', 1500, 'https://img.com/teatro.jpg', true),
+                                                                                    ('Centro de Eventos Espacio Riesco', 'Av. El Salto 5000', 'Santiago', 10000, 'https://img.com/riesco.jpg', true),
+                                                                                    ('Parque Bicentenario', 'Av. Bicentenario 3800', 'Vitacura', 20000, 'https://img.com/parque.jpg', true);
