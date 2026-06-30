@@ -1,0 +1,6 @@
+INSERT INTO exponentes (nombre, apellido, biografia, nacionalidad, imagen_url, redes_sociales, evento_id) VALUES
+                                                                                                              ('Carlos', 'Vives', 'Cantante y actor colombiano reconocido mundialmente', 'Colombiana', 'https://img.com/vives.jpg', '@carlosvives', 1),
+                                                                                                              ('Arturo', 'Vidal', 'Futbolista chileno de clase mundial', 'Chilena', 'https://img.com/vidal.jpg', '@kingarturo23', 2),
+                                                                                                              ('Paulina', 'García', 'Actriz chilena ganadora del Oso de Plata en Berlín', 'Chilena', 'https://img.com/garcia.jpg', '@paulinagarcia', 3),
+                                                                                                              ('Elon', 'Musk', 'Empresario y visionario tecnológico', 'Estadounidense', 'https://img.com/musk.jpg', '@elonmusk', 4),
+                                                                                                              ('Gastón', 'Acurio', 'Chef peruano referente de la gastronomía latinoamericana', 'Peruana', 'https://img.com/acurio.jpg', '@gastonacurio', 5);

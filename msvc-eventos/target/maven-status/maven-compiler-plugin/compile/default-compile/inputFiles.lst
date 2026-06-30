@@ -1,0 +1,14 @@
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\config\OpenApiConfig.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\controller\CategoriasController.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\controller\EventosController.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\dto\CategoriasDTO.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\dto\EventosDTO.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\exception\GlobalExceptionHandler.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\exception\ResourceNotFoundException.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\model\Categorias.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\model\Eventos.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\MsvcEventosApplication.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\repository\CategoriasRepository.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\repository\EventosRepository.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\service\CategoriasService.java
+C:\Users\theje\Downloads\msvc-eventos\src\main\java\cl\duoc\msvc_eventos\service\EventosService.java
