@@ -1,0 +1,208 @@
+version: '3.8'
+
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_clientes
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - eventflow-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  eureka-server:
+    build: ../eureka-server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - eventflow-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  config-server:
+    build: ../config-server
+    container_name: config-server
+    ports:
+      - "8888:8888"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - eventflow-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  msvc-clientes:
+    build: ../msvc-clientes
+    container_name: msvc-clientes
+    environment:
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db_clientes
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      config-server:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+    networks:
+      - eventflow-network
+
+  msvc-eventos:
+    build: ../msvc-eventos
+    container_name: msvc-eventos
+    environment:
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db_eventos
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      config-server:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+    networks:
+      - eventflow-network
+
+  msvc-recintos:
+    build: ../msvc-recintos
+    container_name: msvc-recintos
+    environment:
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db_recintos
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      config-server:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+    networks:
+      - eventflow-network
+
+  msvc-exponentes:
+    build: ../msvc-exponentes
+    container_name: msvc-exponentes
+    environment:
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db_exponentes
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      config-server:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+    networks:
+      - eventflow-network
+
+  msvc-precios:
+    build: ../msvc-precios
+    container_name: msvc-precios
+    environment:
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db_precios
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      config-server:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+    networks:
+      - eventflow-network
+
+  msvc-ordenes:
+    build: ../msvc-ordenes
+    container_name: msvc-ordenes
+    environment:
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db_ordenes
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      config-server:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+    networks:
+      - eventflow-network
+
+  msvc-tickets:
+    build: ../msvc-tickets
+    container_name: msvc-tickets
+    environment:
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db_tickets
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      config-server:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+    networks:
+      - eventflow-network
+
+  msvc-resenas:
+    build: ../msvc-resenas
+    container_name: msvc-resenas
+    environment:
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db_resenas
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      config-server:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+    networks:
+      - eventflow-network
+
+  api-gateway:
+    build: ../api-gateway
+    container_name: api-gateway
+    ports:
+      - "8090:8090"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      config-server:
+        condition: service_healthy
+    networks:
+      - eventflow-network
+
+networks:
+  eventflow-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
